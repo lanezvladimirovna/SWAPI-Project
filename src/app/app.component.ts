@@ -5,13 +5,14 @@ import { CommonModule, JsonPipe } from '@angular/common';
 import { Result } from './models/result.model';
 import { CharacterCardComponent } from './components/character_card/character-card.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ErrorCardComponent } from './components/error_card/error_card.componen';
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,RouterOutlet,JsonPipe,CharacterCardComponent,SpinnerComponent],
+  imports: [CommonModule,RouterOutlet,JsonPipe,CharacterCardComponent,SpinnerComponent,ErrorCardComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
   readonly swapiService = inject(SWAPIService);
   selectedItem: Result | undefined;
   isLoading = true;
+  displayError = false;
 
   constructor(){
     effect(()=>{
@@ -36,6 +38,9 @@ export class AppComponent implements OnInit {
         this.swapiService.setPeople(people);
         this.isLoading = false;
       },
+      error: ()=>{
+        this.displayError=true;
+      }
     });
   }
 
