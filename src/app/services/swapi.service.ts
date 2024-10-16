@@ -11,10 +11,10 @@ export class SWAPIService {
 
   private readonly baseUrl = 'https://swapi.dev/api/people';
   readonly people = signal<Result[]>([]);
-  readonly searchFilter = signal<string>(localStorage.getItem('search') as string);
-  readonly genderFilter = signal<string[]>([...JSON.parse(localStorage.getItem('gender')!) as string[]]);
-  readonly favoriteFilter = signal<string[]>([...JSON.parse(localStorage.getItem('favorite')!) as string[]]);
-  readonly showFavorite = signal<boolean>(JSON.parse(localStorage.getItem('showFavorite')!) as boolean);
+  readonly searchFilter = signal<string>(localStorage.getItem('search') as string ?? '');
+  readonly genderFilter = signal<string[]>(JSON.parse(localStorage.getItem('gender')!) as string[] ?? []);
+  readonly favoriteFilter = signal<string[]>(JSON.parse(localStorage.getItem('favorite')!) as string[] ?? []);
+  readonly showFavorite = signal<boolean>(JSON.parse(localStorage.getItem('showFavorite')!) as boolean ?? false);
 
   readonly genderValues = computed(() => [
     ...new Set(this.people().map((item) => item.gender)),
