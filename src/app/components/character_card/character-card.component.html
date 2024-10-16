@@ -1,0 +1,25 @@
+@if(character){
+<div
+  class="w-full h-full bg-gray-800 text-white rounded-lg shadow-lg p-6 flex flex-col"
+>
+  <h2 class="text-2xl font-bold mb-4">{{ character.name }}</h2>
+  <ul class="text-sm space-y-2 flex-grow">
+    <li><strong>Height:</strong> {{ character.height }} cm</li>
+    <li><strong>Mass:</strong> {{ character.mass }} kg</li>
+    <li><strong>Hair Color:</strong> {{ character.hair_color }}</li>
+    <li><strong>Birth Year:</strong> {{ character.birth_year }}</li>
+    <li><strong>Gender:</strong> {{ character.gender }}</li>
+  </ul>
+</div>
+} @else {
+<div
+  class="w-full h-full bg-gray-800 text-white rounded-lg shadow-lg p-6 flex flex-col justify-center items-center"
+>
+  <img
+    src="assets/r2d2.png"
+    class="w-1/2 flex "
+    alt="Loading"
+  />
+  <label>Select an item to see more details</label>
+</div>
+}
