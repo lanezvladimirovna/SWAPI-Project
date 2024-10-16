@@ -55,7 +55,7 @@
           @for(person of swapiService.filteredData(); track person; let index = $index){
           <li class="py-2 border-b flex flex-row justify-between items-center">
             <label class="cursor-pointer" (click)="selectItem(person)">{{ person.name }}</label>
-            <input [checked]="swapiService.favoriteFilter()?.includes(person.name)" class="ms-auto" type="checkbox" (click)="swapiService.markAsFavorite(person.name)" />
+            <input [checked]="swapiService.favoriteFilter().includes(person.name)" class="ms-auto" type="checkbox" (click)="swapiService.markAsFavorite(person.name)" />
            </li>
           }
         </ul>
